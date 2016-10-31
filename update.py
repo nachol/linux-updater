@@ -39,6 +39,11 @@ def updateOPT():
 		p = subprocess.Popen(['git','pull'], cwd='/opt/'+folders)
 		p.wait()
 
+def updateNessus():
+	clear()
+	print('Updating Nessus')
+	os.system('/opt/nessus/sbin/nessuscli update --all')
+
 def noValidOption():
 	clear()
 	print('Thats not a valid option.')
@@ -52,7 +57,8 @@ while ans:
 -----------------------------------------------------
 [1] Update Repos - Distribution
 [2] Update OPT
-[3] Update All
+[3] Update Nessus Plugins & Core
+[80] Update All
 [99] Exit/Quit
 -----------------------------------------------------
     """
@@ -62,8 +68,11 @@ while ans:
     elif ans == 2:
         updateOPT()
     elif ans == 3:
+	updateNessus()
+    elif ans == 80:
         updateRepos()
         updateOPT()
+	updateNessus()
     elif ans == 99:
 	sys.exit(0)
     else:
