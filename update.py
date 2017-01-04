@@ -44,6 +44,11 @@ def updateNessus():
 	print('Updating Nessus')
 	os.system('/opt/nessus/sbin/nessuscli update --all')
 
+def updateExploitDB():
+	clear()
+	print('Updating Exploit DB')
+	os.system('searchsploit -u')
+
 def noValidOption():
 	clear()
 	print('Thats not a valid option.')
@@ -58,6 +63,7 @@ while ans:
 [1] Update Repos - Distribution
 [2] Update OPT
 [3] Update Nessus Plugins & Core
+[4] Update Exploit DB
 [80] Update All
 [99] Exit/Quit
 -----------------------------------------------------
@@ -69,10 +75,13 @@ while ans:
         updateOPT()
     elif ans == 3:
 	updateNessus()
+    elif ans == 4:
+	updateExploitDB()
     elif ans == 80:
         updateRepos()
         updateOPT()
 	updateNessus()
+	updateExploitDB()
     elif ans == 99:
 	sys.exit(0)
     else:
